@@ -84,7 +84,7 @@ public class CommandDecoder extends ReplayingDecoder<State> {
     final ExecutorService executor;
     private final boolean decodeInExecutor;
     
-    private final FastThreadLocal<State> state = new FastThreadLocal<State>();
+    private final ThreadLocal<State> state = new ThreadLocal<State>();
     
     public CommandDecoder(ExecutorService executor, boolean decodeInExecutor) {
         this.decodeInExecutor = decodeInExecutor;
@@ -127,6 +127,7 @@ public class CommandDecoder extends ReplayingDecoder<State> {
                 throw e;
             }
         }
+        state.remove();
     }
 
     private void decode(ChannelHandlerContext ctx, ByteBuf in, QueueCommand data) throws Exception {
