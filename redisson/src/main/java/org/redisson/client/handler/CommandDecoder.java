@@ -65,7 +65,6 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;
 import io.netty.util.CharsetUtil;
-import io.netty.util.concurrent.FastThreadLocal;
 
 /**
  * Redis protocol command decoder
